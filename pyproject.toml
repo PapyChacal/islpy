@@ -13,6 +13,7 @@ requires = [
 
     "wheel>=0.34.2",
     "cmake>=3.18",
+    "typing_extensions",
     "scikit-build",
     "nanobind",
     "ninja",

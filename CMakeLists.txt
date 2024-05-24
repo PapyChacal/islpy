@@ -27,6 +27,15 @@ nanobind_add_module(
   ${ISL_SOURCES}
 )
 
+nanobind_add_stub(
+  _isl_stub
+  MODULE _isl
+  OUTPUT _isl.pyi
+  MARKER_FILE py.typed
+  PYTHON_PATH $<TARGET_FILE_DIR:_isl>
+  DEPENDS _isl
+)
+
 # Work around https://github.com/inducer/islpy/issues/120.
 # See https://stackoverflow.com/questions/43554227/extern-inline-func-results-in-undefined-reference-error
 # for some context.
@@ -61,5 +70,6 @@ else()
 endif()
 
 install(TARGETS _isl LIBRARY DESTINATION .)
+install(FILES ${CMAKE_BINARY_DIR}/py.typed ${CMAKE_BINARY_DIR}/_isl.pyi DESTINATION .)
 
 # vim: sw=2
